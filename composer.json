@@ -1,5 +1,5 @@
 {
-    "name": "terrencegf/oauth2-google",
+    "name": "terrencegf/oauth2-cilogon",
     "description": "CILogon OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "license": "NCSA",
     "authors": [
