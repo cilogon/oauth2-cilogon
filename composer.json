@@ -1,11 +1,11 @@
 {
-    "name": "terrencegf/oauth2-cilogon",
+    "name": "cilogon/oauth2-cilogon",
     "description": "CILogon OAuth 2.0 Client Provider for The PHP League OAuth2-Client",
     "license": "NCSA",
     "authors": [
         {
-            "name": "Terrence Fleury",
-            "email": "terrencegf@gmail.com",
+            "name": "Terry Fleury",
+            "email": "tfleury@cilogon.org",
             "homepage": "http://www.cilogon.org"
         }
     ],
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "TerrenceGF\\OAuth2\\Client\\": "src/"
+            "CILogon\\OAuth2\\Client\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TerrenceGF\\OAuth2\\Client\\Test\\": "test/src/"
+            "CILogon\\OAuth2\\Client\\Test\\": "test/src/"
         }
     }
 }

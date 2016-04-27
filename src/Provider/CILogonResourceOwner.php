@@ -1,18 +1,18 @@
 <?php
 
 /**
- * This file is part of the terrencegf/oauth2-cilogon library
+ * This file is part of the cilogon/oauth2-cilogon library
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @author    Terrence Fleury <terrencegf@gmail.com>
+ * @author    Terry Fleury <tfleury@cilogon.org>
  * @copyright 2016 University of Illinois
  * @license   https://opensource.org/licenses/NCSA NCSA
- * @link      https://github.com/terrencegf/oauth2-cilogon GitHub
+ * @link      https://github.com/cilogon/oauth2-cilogon GitHub
  */
 
-namespace TerrenceGF\OAuth2\Client\Provider;
+namespace CILogon\OAuth2\Client\Provider;
 
 use League\OAuth2\Client\Provider\ResourceOwnerInterface;
 
