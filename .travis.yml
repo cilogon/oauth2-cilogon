@@ -14,7 +14,6 @@ before_script:
 
 script:
   - mkdir -p build/logs
-  - ./vendor/bin/parallel-lint src test
   - ./vendor/bin/phpcs --standard=psr2 src/
   - ./vendor/bin/phpunit --coverage-clover build/logs/coverage.clover
 
