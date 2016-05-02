@@ -26,9 +26,6 @@
         "mockery/mockery": "~0.9",
         "squizlabs/php_codesniffer": "~2.0"
     },
-    "suggest": {
-        "illuminate/support": "Laravel framework integration"
-    },
     "autoload": {
         "psr-4": {
             "CILogon\\OAuth2\\Client\\": "src/"

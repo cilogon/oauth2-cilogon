@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the cilogon/oauth2-cilogon library
+ * This file is part of the cilogon/oauth2-cilogon library.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -59,6 +59,8 @@ class CILogon extends AbstractProvider
      *
      * This should only be the scopes that are required to request the details
      * of the resource owner, rather than all the available scopes.
+     * 
+     * Other available scopes include: email, profile, org.cilogon.userinfo
      *
      * @return array
      */

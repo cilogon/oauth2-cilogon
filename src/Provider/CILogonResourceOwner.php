@@ -1,7 +1,7 @@
 <?php
 
 /**
- * This file is part of the cilogon/oauth2-cilogon library
+ * This file is part of the cilogon/oauth2-cilogon library.
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -36,7 +36,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner id
+     * Get resource owner id.
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner display name
+     * Get resource owner display name.
      *
      * @return string
      */
@@ -56,7 +56,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner given (first) name
+     * Get resource owner given (first) name.
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner family (last) name
+     * Get resource owner family (last) name.
      *
      * @return string
      */
@@ -76,7 +76,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner eduPersonPrincipalName
+     * Get resource owner eduPersonPrincipalName.
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner eduPersonTargetedID
+     * Get resource owner eduPersonTargetedID.
      *
      * @return string
      */
@@ -96,7 +96,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
-     * Get resource owner email address
+     * Get resource owner email address.
      *
      * @return string
      */
