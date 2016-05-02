@@ -134,6 +134,7 @@ At the time of authoring this documentation, the following scopes are available.
 ### Refreshing a Token
 
 ```php
+$refreshtoken = $token->getRefreshToken();
 $token = $provider->getAccessToken('refresh_token', [
     'refresh_token' => $refreshtoken,
 ]);
