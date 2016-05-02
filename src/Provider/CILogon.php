@@ -59,7 +59,7 @@ class CILogon extends AbstractProvider
      *
      * This should only be the scopes that are required to request the details
      * of the resource owner, rather than all the available scopes.
-     * 
+     *
      * Other available scopes include: email, profile, org.cilogon.userinfo
      *
      * @return array
@@ -75,7 +75,7 @@ class CILogon extends AbstractProvider
      * Returns the string that should be used to separate scopes when building
      * the URL for requesting an access token.
      *
-     * @return string Scope separator, defaults to space 
+     * @return string Scope separator, defaults to space
      */
     protected function getScopeSeparator()
     {
