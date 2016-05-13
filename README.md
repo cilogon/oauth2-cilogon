@@ -121,6 +121,7 @@ $options = [
 
 $authorizationUrl = $provider->getAuthorizationUrl($options);
 ```
+
 If neither are defined, the provider will utilize internal defaults.
 
 At the time of authoring this documentation, the following scopes are available.
@@ -130,6 +131,22 @@ At the time of authoring this documentation, the following scopes are available.
 - profile - gives the user's name (given, family, and display, if available)
 - org.cilogon.userinfo - gives Identity Provider SAML attributes, e.g.,  ePPN (eduPersonPrincipalName), ePTID (eduPersonTargetedID), eduPersonScopedAffiliation, ou (organizationalUnitName)
 
+Two additional [CILogon-specific options](http://www.cilogon.org/oidc) are available.
+
+- selected\_idp - the SAML entityId of the user's pre-selected Identity Provider. If given, CILogon UI will present the user with this IdP and ask for consent for release of information. See [https://cilogon.org/include/idplist.xml](https://cilogon.org/include/idplist.xml) for the list of Identity Providers supported by CILogon (those desginated as \<Whitelisted\>).
+- skin - a pre-defined custom CILogon interface skin to change the look of the CILogon site. Contact [help@cilogon.org](mailto:help@cilogon.org) to reqeust a custom skin.
+
+Example:
+
+```php
+$options = [
+    'scope' => ['openid','email','profile','org.cilogon.userinfo'],
+    'selected_idp' => 'urn:mace:incommon:uiuc.edu', // UIUC
+    'skin' => 'globusonline' // For globus.org
+];
+
+$authorizationUrl = $provider->getAuthorizationUrl($options);
+```
 
 ### Refreshing a Token
 
