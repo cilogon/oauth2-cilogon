@@ -87,7 +87,7 @@ if (!empty($_GET['error'])) {
         $user = $provider->getResourceOwner($token);
 
         echo '<xmp>' . "\n";
-        echo 'User ID                : ' . $user->getID() . "\n";
+        echo 'User ID                : ' . $user->getId() . "\n";
         echo 'First name             : ' . $user->getGivenName() . "\n";
         echo 'Last name              : ' . $user->getFamilyName() . "\n";
         echo 'Full name              : ' . $user->getName() . "\n";
