@@ -66,6 +66,17 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     }
 
     /**
+     * Get resource owner given (first) name.
+     * Alias for getGivenName().
+     *
+     * @return string
+     */
+    public function getFirstName()
+    {
+        return $this->getGivenName();
+    }
+
+    /**
      * Get resource owner family (last) name.
      *
      * @return string
@@ -73,6 +84,17 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     public function getFamilyName()
     {
         return $this->response['family_name'] ?: null;
+    }
+
+    /**
+     * Get resource owner family (last) name.
+     * Alias for getFamilyName();
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->getFamilyName();
     }
 
     /**
