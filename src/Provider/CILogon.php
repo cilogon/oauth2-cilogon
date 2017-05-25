@@ -104,7 +104,7 @@ class CILogon extends AbstractProvider
             }
         } elseif ($response->getStatusCode() >= 400) {
             $error = true;
-            $errcode = $resopnse->getStatusCode();
+            $errcode = $response->getStatusCode();
             $errmsg = $response->getReasonPhrase();
         }
 
