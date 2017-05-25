@@ -184,6 +184,8 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $status = rand(401,599);
         $reason = 'HTTP ERROR';
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $postResponse->shouldReceive('getBody')->andReturn('');
+        $postResponse->shouldReceive('getHeader')->andReturn([]);
         $postResponse->shouldReceive('getStatusCode')->andReturn($status);
         $postResponse->shouldReceive('getReasonPhrase')->andReturn($reason);
         $client = m::mock('GuzzleHttp\ClientInterface');
