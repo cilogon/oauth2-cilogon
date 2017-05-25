@@ -42,7 +42,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getId()
     {
-        return $this->response['sub'] ?: null;
+        return @$this->response['sub'] ?: null;
     }
 
     /**
@@ -52,7 +52,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getName()
     {
-        return $this->response['name'] ?: null;
+        return @$this->response['name'] ?: null;
     }
 
     /**
@@ -62,7 +62,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getGivenName()
     {
-        return $this->response['given_name'] ?: null;
+        return @$this->response['given_name'] ?: null;
     }
 
     /**
@@ -83,7 +83,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getFamilyName()
     {
-        return $this->response['family_name'] ?: null;
+        return @$this->response['family_name'] ?: null;
     }
 
     /**
@@ -104,7 +104,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getEPPN()
     {
-        return $this->response['eppn'] ?: null;
+        return @$this->response['eppn'] ?: null;
     }
 
     /**
@@ -114,7 +114,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getEPTID()
     {
-        return $this->response['eptid'] ?: null;
+        return @$this->response['eptid'] ?: null;
     }
 
     /**
@@ -124,7 +124,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getEmail()
     {
-        return $this->response['email'] ?: null;
+        return @$this->response['email'] ?: null;
     }
 
     /**
@@ -135,7 +135,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getIdP()
     {
-        return $this->response['idp'] ?: null;
+        return @$this->response['idp'] ?: null;
     }
 
     /**
@@ -146,7 +146,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getIdPName()
     {
-        return $this->response['idp_name'] ?: null;
+        return @$this->response['idp_name'] ?: null;
     }
 
     /**
@@ -156,7 +156,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getOU()
     {
-        return $this->response['ou'] ?: null;
+        return @$this->response['ou'] ?: null;
     }
 
     /**
@@ -166,7 +166,7 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getAffiliation()
     {
-        return $this->response['affiliation'] ?: null;
+        return @$this->response['affiliation'] ?: null;
     }
 
     /**
