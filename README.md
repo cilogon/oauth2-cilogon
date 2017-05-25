@@ -93,8 +93,8 @@ if (!empty($_GET['error'])) {
 
         echo '<xmp>' . "\n";
         echo 'User ID                : ' . $user->getId() . "\n";
-        echo 'First name             : ' . $user->getGivenName() . "\n";
-        echo 'Last name              : ' . $user->getFamilyName() . "\n";
+        echo 'First name             : ' . $user->getGivenName() . "\n";   // or getFirstName()
+        echo 'Last name              : ' . $user->getFamilyName() . "\n";  // or getLastName()
         echo 'Full name              : ' . $user->getName() . "\n";
         echo 'Email                  : ' . $user->getEmail() . "\n";
         echo 'eduPersonPrincipalName : ' . $user->getEPPN() . "\n";
