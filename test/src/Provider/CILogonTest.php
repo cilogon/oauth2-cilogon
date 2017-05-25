@@ -41,7 +41,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
 
     public function testScopes()
     {
-        $options = ['scope' => [uniqid(),uniqid()]];
+        $options = ['scope' => [uniqid()]];
 
         $url = $this->provider->getAuthorizationUrl($options);
 
@@ -93,7 +93,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals('mock_access_token', $token->getToken());
-        $this->assertGreaterThanOrEqual(time(), $token->getExpires());
+        $this->assertGreaterThanOrEqual(time(), (int)$token->getExpires());
         $this->assertEquals('mock_refresh_token', $token->getRefreshToken());
         $this->assertNull($token->getResourceOwnerId());
     }
@@ -148,7 +148,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($idp, $user->getIdP());
         $this->assertEquals($idp, $user->toArray()['idp']);
         $this->assertEquals($idpname, $user->getIdPName());
-        $this->assertEquals($idpname, $user->toArray()['idpn_name']);
+        $this->assertEquals($idpname, $user->toArray()['idp_name']);
         $this->assertEquals($ou, $user->getOU());
         $this->assertEquals($ou, $user->toArray()['ou']);
         $this->assertEquals($affiliation, $user->getAffiliation());
