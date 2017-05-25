@@ -1,10 +1,15 @@
 # CILogon Provider for the OAuth 2.0 Client
 
-[![Build Status](https://travis-ci.org/cilogon/oauth2-cilogon.svg?branch=master)](https://travis-ci.org/cilogon/oauth2-cilogon)
-[![Coverage Status](https://coveralls.io/repos/github/cilogon/oauth2-cilogon/badge.svg?branch=master)](https://coveralls.io/github/cilogon/oauth2-cilogon?branch=master)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/cilogon/oauth2-cilogon/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/cilogon/oauth2-cilogon/?branch=master)
+[![License](https://img.shields.io/badge/license-NCSA-brightgreen.svg)](https://github.com/cilogon/oauth2-cilogon/blob/master/LICENSE)
+[![Travis](https://img.shields.io/travis/cilogon/oauth2-cilogon/master.svg)](https://travis-ci.org/cilogon/oauth2-cilogon)
+[![Scrutinizer](https://img.shields.io/scrutinizer/g/cilogon/oauth2-cilogon/master.svg)](https://scrutinizer-ci.com/g/cilogon/oauth2-cilogon/)
+[![Coveralls](https://img.shields.io/coveralls/cilogon/oauth2-cilogon/master.svg)](https://coveralls.io/github/cilogon/oauth2-cilogon?branch=master)
 
 This package provides CILogon OAuth 2.0 support for the PHP League's [OAuth 2.0 Client](https://github.com/thephpleague/oauth2-client).
+
+[CILogon](http://www.cilogon.org) facilitates federated authentication for CyberInfrastructure (CI). For more information, see
+[http://www.cilogon.org/oidc](http://www.cilogon.org/oidc) . Note that CILogon is used primarily by NSF-funded projects. All client
+registrations are vetted and approved manually.
 
 This package is compliant with [PSR-1][], [PSR-2][] and [PSR-4][]. If you notice compliance oversights, please send
 a patch via pull request.
