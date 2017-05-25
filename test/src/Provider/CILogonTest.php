@@ -136,8 +136,10 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($name, $user->getName());
         $this->assertEquals($name, $user->toArray()['name']);
         $this->assertEquals($given_name, $user->getGivenName());
+        $this->assertEquals($given_name, $user->getFirstName());
         $this->assertEquals($given_name, $user->toArray()['given_name']);
         $this->assertEquals($family_name, $user->getFamilyName());
+        $this->assertEquals($family_name, $user->getLastName());
         $this->assertEquals($family_name, $user->toArray()['family_name']);
         $this->assertEquals($eppn, $user->getEPPN());
         $this->assertEquals($eppn, $user->toArray()['eppn']);
@@ -165,6 +167,25 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $postResponse->shouldReceive('getBody')->andReturn('{"error":"mock_error_name","error_description":"mock_error_message"}');
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn($status);
+        $client = m::mock('GuzzleHttp\ClientInterface');
+        $client->shouldReceive('send')
+            ->times(1)
+            ->andReturn($postResponse);
+        $this->provider->setHttpClient($client);
+        $token = $this->provider->getAccessToken('authorization_code', 
+            ['code' => 'mock_authorization_code']);
+    }
+
+    /**
+     * @expectedException League\OAuth2\Client\Provider\Exception\IdentityProviderException
+     **/
+    public function testExceptionThrownWnenHTTPErrorStatus()
+    {
+        $status = rand(401,599);
+        $reason = 'HTTP ERROR';
+        $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
+        $postResponse->shouldReceive('getStatusCode')->andReturn($status);
+        $postResponse->shouldReceive('getReasonPhrase')->andReturn($reason);
         $client = m::mock('GuzzleHttp\ClientInterface');
         $client->shouldReceive('send')
             ->times(1)
