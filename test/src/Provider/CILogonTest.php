@@ -93,7 +93,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         ]);
 
         $this->assertEquals('mock_access_token', $token->getToken());
-        $this->assertGreaterThanOrEqual(time(), (int)$token->getExpires());
+        $this->assertNull($token->getExpires());
         $this->assertEquals('mock_refresh_token', $token->getRefreshToken());
         $this->assertNull($token->getResourceOwnerId());
     }
