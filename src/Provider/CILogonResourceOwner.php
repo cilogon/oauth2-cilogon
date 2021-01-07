@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  *
  * @author    Terry Fleury <tfleury@cilogon.org>
- * @copyright 2016 University of Illinois
+ * @copyright 2020 University of Illinois
  * @license   https://opensource.org/licenses/NCSA NCSA
  * @link      https://github.com/cilogon/oauth2-cilogon GitHub
  */
@@ -43,6 +43,16 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     public function getId()
     {
         return @$this->response['sub'] ?: null;
+    }
+
+    /**
+     * An alias for getId().
+     *
+     * @return string
+     */
+    public function getSub()
+    {
+        return $this->getId();
     }
 
     /**
@@ -167,6 +177,112 @@ class CILogonResourceOwner implements ResourceOwnerInterface
     public function getAffiliation()
     {
         return @$this->response['affiliation'] ?: null;
+    }
+
+    /**
+     * Get the Authentication Context Class Reference (ACR) value
+     * for the transaction. Typically used for MFA.
+     *
+     * @return string
+     */
+    public function getAcr()
+    {
+        return @$this->response['acr'] ?: null;
+    }
+
+    /**
+     * Get the resource owner Subject Id.
+     *
+     * @return string
+     */
+    public function getSubjectId()
+    {
+        return @$this->response['subject_id'] ?: null;
+    }
+
+    /**
+     * Get the resource owner Pairwise Id.
+     *
+     * @return string
+     */
+    public function getPairwiseId()
+    {
+        return @$this->response['pairwise_id'] ?: null;
+    }
+
+    /**
+     * Get the resource ownder voPersonExternalId.
+     * Part of the voPerson schema.
+     * https://github.com/voperson/voperson
+     *
+     * @return string
+     */
+    public function getVoPersonExternalId()
+    {
+        return @$this->response['voPersonExternalID'] ?: null;
+    }
+
+    /**
+     * Get the resource owner (Unix) UID name.
+     *
+     * @return string
+     */
+    public function getUID()
+    {
+        return @$this->response['uid'] ?: null;
+    }
+
+    /**
+     * Get the resource owner (Unix) UID number.
+     *
+     * @return string
+     */
+    public function getUIDNumber()
+    {
+        return @$this->response['uidNumber'] ?: null;
+    }
+
+    /**
+     * Get the resource owner group membership.
+     *
+     * @return string
+     */
+    public function getIsMemberOf()
+    {
+        return @$this->response['isMemberOf'] ?: null;
+    }
+
+    /**
+     * Get the resource owner X509 certificate subject
+     * Distinguished Name (DN)
+     *
+     * @return string
+     */
+    public function getCertSubjectDN()
+    {
+        return @$this->response['cert_subject_dn'] ?: null;
+    }
+
+    /**
+     * Get the resource owner OpenID Connect sub as
+     * returned by the OIDC Provider (i.e., Google,
+     * GitHub, and ORCID).
+     *
+     * @return string
+     */
+    public function getOIDC()
+    {
+        return @$this->response['oidc'] ?: null;
+    }
+
+    /**
+     * Get the access token ID for the transaction.
+     *
+     * @return string
+     */
+    public function getTokenId()
+    {
+        return @$this->response['token_id'] ?: null;
     }
 
     /**

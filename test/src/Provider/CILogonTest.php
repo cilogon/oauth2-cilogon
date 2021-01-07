@@ -80,7 +80,11 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
     public function testGetAccessToken()
     {
         $response = m::mock('Psr\Http\Message\ResponseInterface');
-        $response->shouldReceive('getBody')->andReturn('{"access_token": "mock_access_token", "token_type":"bearer", "refresh_token":"mock_refresh_token"}');
+        $response->shouldReceive('getBody')->andReturn(
+            '{"access_token":"mock_access_token"' .
+            ',"token_type":"bearer"' .
+            ',"refresh_token":"mock_refresh_token"}'
+        );
         $response->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $response->shouldReceive('getStatusCode')->andReturn(200);
 
@@ -111,14 +115,50 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $idpname = uniqid();
         $ou = uniqid();
         $affiliation = uniqid();
+        $acr = uniqid();
+        $subject_id = uniqid();
+        $pairwise_id = uniqid();
+        $voPersonExternalId = uniqid();
+        $uid = uniqid();
+        $uidNumber = uniqid();
+        $isMemberOf = uniqid();
+        $cert_subject_dn = uniqid();
+        $oidc = uniqid();
+        $token_id = uniqid();
 
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
-        $postResponse->shouldReceive('getBody')->andReturn('{"access_token":"mock_access_token","token_type":"bearer","refresh_token":"mock_refresh_token"}');
+        $postResponse->shouldReceive('getBody')->andReturn(
+            '{"access_token":"mock_access_token"' .
+            ',"token_type":"bearer"' .
+            ',"refresh_token":"mock_refresh_token"}'
+        );
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn(200);
 
         $userResponse = m::mock('Psr\Http\Message\ResponseInterface');
-        $userResponse->shouldReceive('getBody')->andReturn('{"sub":"'.$id.'","name":"'.$name.'","given_name":"'.$given_name.'","family_name":"'.$family_name.'","eppn":"'.$eppn.'","eptid":"'.$eptid.'","email":"'.$email.'","idp":"'.$idp.'","idp_name":"'.$idpname.'","ou":"'.$ou.'","affiliation":"'.$affiliation.'"}');
+        $userResponse->shouldReceive('getBody')->andReturn(
+            '{"sub":"' . $id .
+            '","name":"' . $name .
+            '","given_name":"' . $given_name .
+            '","family_name":"' . $family_name .
+            '","eppn":"' . $eppn .
+            '","eptid":"' . $eptid .
+            '","email":"' . $email .
+            '","idp":"' . $idp .
+            '","idp_name":"' . $idpname .
+            '","ou":"' .  $ou .
+            '","affiliation":"' . $affiliation .
+            '","acr":"' . $acr .
+            '","subject_id":"' . $subject_id .
+            '","pairwise_id":"' .  $pairwise_id .
+            '","voPersonExternalId":"' . $voPersonExternalId .
+            '","uid":"' . $uid .
+            '","uidNumber":"' . $uidNumber .
+            '","isMemberOf":"' . $isMemberOf .
+            '","cert_subject_dn":"' .  $cert_subject_dn .
+            '","oidc":"' . $oidc .
+            '","token_id":"' . $token_id . '"}'
+        );
         $userResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $userResponse->shouldReceive('getStatusCode')->andReturn(200);
 
@@ -132,6 +172,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $user = $this->provider->getResourceOwner($token);
 
         $this->assertEquals($id, $user->getId());
+        $this->assertEquals($id, $user->getSub());
         $this->assertEquals($id, $user->toArray()['sub']);
         $this->assertEquals($name, $user->getName());
         $this->assertEquals($name, $user->toArray()['name']);
@@ -155,6 +196,26 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($ou, $user->toArray()['ou']);
         $this->assertEquals($affiliation, $user->getAffiliation());
         $this->assertEquals($affiliation, $user->toArray()['affiliation']);
+        $this->assertEquals($acr, $user->getAcr());
+        $this->assertEquals($acr, $user->toArray()['acr']);
+        $this->assertEquals($subject_id, $user->getSubjectId());
+        $this->assertEquals($subject_id, $user->toArray()['subject_id']);
+        $this->assertEquals($pairwise_id, $user->getPairwiseId());
+        $this->assertEquals($pairwise_id, $user->toArray()['pairwise_id']);
+        $this->assertEquals($voPersonExternalId, $user->getVoPersonExternalId());
+        $this->assertEquals($voPersonExternalId, $user->toArray()['voPersonExternalID']);
+        $this->assertEquals($uid, $user->getUID());
+        $this->assertEquals($uid, $user->toArray()['uid']);
+        $this->assertEquals($uidNumber, $user->getUIDNumber());
+        $this->assertEquals($uidNumber, $user->toArray()['uidNumber']);
+        $this->assertEquals($isMemberOf, $user->getIsMemberOf());
+        $this->assertEquals($isMemberOf, $user->toArray()['isMemberOf']);
+        $this->assertEquals($cert_subject_dn, $user->getCertSubjectDN());
+        $this->assertEquals($cert_subject_dn, $user->toArray()['cert_subject_dn']);
+        $this->assertEquals($oidc, $user->getOIDC());
+        $this->assertEquals($oidc, $user->toArray()['oidc']);
+        $this->assertEquals($token_id, $user->getTokenId());
+        $this->assertEquals($token_id, $user->toArray()['token_id']);
     }
 
     /**
@@ -162,9 +223,12 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
      **/
     public function testExceptionThrownWhenErrorObjectReceived()
     {
-        $status = rand(401,599);
+        $status = rand(401, 599);
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
-        $postResponse->shouldReceive('getBody')->andReturn('{"error":"mock_error_name","error_description":"mock_error_message"}');
+        $postResponse->shouldReceive('getBody')->andReturn(
+            '{"error":"mock_error_name",' .
+            '"error_description":"mock_error_message"}'
+        );
         $postResponse->shouldReceive('getHeader')->andReturn(['content-type' => 'json']);
         $postResponse->shouldReceive('getStatusCode')->andReturn($status);
         $client = m::mock('GuzzleHttp\ClientInterface');
@@ -172,8 +236,10 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
             ->times(1)
             ->andReturn($postResponse);
         $this->provider->setHttpClient($client);
-        $token = $this->provider->getAccessToken('authorization_code', 
-            ['code' => 'mock_authorization_code']);
+        $token = $this->provider->getAccessToken(
+            'authorization_code',
+            ['code' => 'mock_authorization_code']
+        );
     }
 
     /**
@@ -181,7 +247,7 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
      **/
     public function testExceptionThrownWnenHTTPErrorStatus()
     {
-        $status = rand(401,599);
+        $status = rand(401, 599);
         $reason = 'HTTP ERROR';
         $postResponse = m::mock('Psr\Http\Message\ResponseInterface');
         $postResponse->shouldReceive('getBody')->andReturn('');
@@ -193,8 +259,9 @@ class CILogonTest extends \PHPUnit_Framework_TestCase
             ->times(1)
             ->andReturn($postResponse);
         $this->provider->setHttpClient($client);
-        $token = $this->provider->getAccessToken('authorization_code', 
-            ['code' => 'mock_authorization_code']);
+        $token = $this->provider->getAccessToken(
+            'authorization_code',
+            ['code' => 'mock_authorization_code']
+        );
     }
 }
-

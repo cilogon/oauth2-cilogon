@@ -152,6 +152,24 @@ $options = [
 $authorizationUrl = $provider->getAuthorizationUrl($options);
 ```
 
+### Using the "test" or "dev" Server
+
+Typically, you would use the production server https://cilogon.org .
+However, you can specify a 'server' parameter when creating the provider to
+use the "test" server https://test.cilogon.org or "dev" server
+https://dev.cilogon.org .
+
+```php
+// Use the "test" server https://test.cilogon.org
+
+$provider = new League\OAuth2\Client\Provider\CILogon([
+    'clientId'     => '{cilogon-client-id}',
+    'clientSecret' => '{cilogon-client-secret}',
+    'redirectUri'  => 'https://example.com/callback-url',
+    'server'       => 'test'
+]);
+```
+
 ### Refreshing a Token
 
 ```php

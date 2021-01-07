@@ -7,7 +7,7 @@
  * file that was distributed with this source code.
  *
  * @author    Terry Fleury <tfleury@cilogon.org>
- * @copyright 2016 University of Illinois
+ * @copyright 2021 University of Illinois
  * @license   https://opensource.org/licenses/NCSA NCSA
  * @link      https://github.com/cilogon/oauth2-cilogon GitHub
  */
@@ -22,13 +22,20 @@ use Psr\Http\Message\ResponseInterface;
 class CILogon extends AbstractProvider
 {
     /**
+     * @var string An alternate server to use, one of "test" or "dev".
+     */
+    public $server = '';
+
+    /**
      * Returns the base URL for authorizing a client.
      *
      * @return string
      */
     public function getBaseAuthorizationUrl()
     {
-        return "https://cilogon.org/authorize";
+        return 'https://' .
+            ((strlen($this->server) > 0) ? $this->server . '.' : '') .
+            'cilogon.org/authorize';
     }
 
     /**
@@ -39,7 +46,9 @@ class CILogon extends AbstractProvider
      */
     public function getBaseAccessTokenUrl(array $params)
     {
-        return "https://cilogon.org/oauth2/token";
+        return 'https://' .
+            ((strlen($this->server) > 0) ? $this->server . '.' : '') .
+            'cilogon.org/oauth2/token';
     }
 
     /**
@@ -51,7 +60,9 @@ class CILogon extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return 'https://cilogon.org/oauth2/userinfo?access_token=' . urlencode($token);
+        return 'https://' .
+            ((strlen($this->server) > 0) ? $this->server . '.' : '') .
+            'cilogon.org/oauth2/userinfo?access_token=' . $token;
     }
 
     /**
