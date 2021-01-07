@@ -62,7 +62,7 @@ class CILogon extends AbstractProvider
     {
         return 'https://' .
             ((strlen($this->server) > 0) ? $this->server . '.' : '') .
-            'cilogon.org/oauth2/userinfo?access_token=' . $token;
+            'cilogon.org/oauth2/userinfo?access_token=' . urlencode($token);
     }
 
     /**
