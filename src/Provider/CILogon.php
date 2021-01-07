@@ -51,7 +51,7 @@ class CILogon extends AbstractProvider
      */
     public function getResourceOwnerDetailsUrl(AccessToken $token)
     {
-        return 'https://cilogon.org/oauth2/userinfo?access_token='.$token;
+        return 'https://cilogon.org/oauth2/userinfo?access_token=' . urlencode($token);
     }
 
     /**
