@@ -249,7 +249,16 @@ class CILogonResourceOwner implements ResourceOwnerInterface
      */
     public function getIsMemberOf()
     {
-        return @$this->response['isMemberOf'] ?: null;
+        $retval = null;
+
+        $memberof = @$this->response['isMemberOf'];
+        if (is_array($memberof)) {
+            $retval = implode(',', $memberof);
+        } elseif (strlen($memberof) > 0) {
+            $retval = $memberof;
+        }
+
+        return $retval;
     }
 
     /**
